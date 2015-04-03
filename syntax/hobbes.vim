@@ -41,7 +41,7 @@ syn region hobStrong    start="\\\@<!\*\(\S\{2,}\)\@="    end="\S\@<=\\\@<!\*"  
 syn region hobMark      start="\\\@<!%\(\S\{2,}\)\@="     end="\S\@<=\\\@<!%"    contains=ALL
 syn region hobSup       start="\\\@<!\^\(\S\{2,}\)\@="    end="\S\@<=\\\@<!\^"   contains=ALL
 syn region hobSub       start="\\\@<!<\(\S\{2,}\)\@="     end="\S\@<=\\\@<!>"    contains=ALL
-syn region hobUnderline start="\\\@<!_\(\S\{2,}\)\@="     end="\S\@<=\\\@<!_"    contains=ALL
+syn region hobUnderline start="\\\@<!_\(\S\{2,}\)\@="     end="\S\@<=\\\@<!_"    contains=ALL keepend oneline
 syn region hobDelete    start="\\\@<!\-\-\(\S\{2,}\)\@="  end="\S\@<=\\\@<!\-\-" contains=ALL
 syn region hobExample   start="(exe\=m\=p\=l\=e\=\s*:\s*" end="\s*)"             contains=ALL
 
