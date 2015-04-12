@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:         Hobbes
 " Maintainer:       Logan Braga
-" Last Change:      April 03, 2015
+" Last Change:      April 12, 2015
 
 if version < 600
     syntax clear
@@ -26,10 +26,14 @@ syn match hobRule     /^\s*\\\@<!\(+\|\*\|\-\|:\|%\|\$\|&\|\~\|#\|'\)\{3,}\s*$/
 syn match hobImg      /\s\S*\.\(png\|jpeg\|gif\|bmp\)\s/
 syn match hobVid      /\s\S*\.\(mp4\|avi\|wmv\|webm\|mov\|3gp\|ogg\|ogv\)\s/
 syn match hobMissing  /\\\@<!#??\+/
-syn match hobLink     /\\\@<!\->\S\+/
-syn match hobLink     /https\=:\/\/\S\+/
-syn match hobAbbrev   /\\\@<!\~\S\+/
 syn match hobVariable /\\\@<!=\S\+/
+syn match hobLink     /\\\@<!\->\S\+/
+syn match hobLink     /\\\@<!\->.\+<\-/
+syn match hobLink     /\\\@<!=>\S\+/
+syn match hobLink     /\\\@<!=>.\+<=/
+syn match hobLink     /https\=:\/\/\S\+/
+syn match hobLink     /[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,24}/
+syn match hobAbbrev   /\\\@<!\~\S\+/
 syn match hobUList    /^\s*\\\@<!\(+\|\*\|\-\|:\|%\|\$\|&\|\~\|#\|'\)\s/
 syn match hobOList    /^\s*\\\@<!\d\+\.\s/
 
@@ -44,6 +48,7 @@ syn region hobSub       start="\\\@<!<\(\S\{2,}\)\@="     end="\S\@<=\\\@<!>"   
 syn region hobUnderline start="\\\@<!_\(\S\{2,}\)\@="     end="\S\@<=\\\@<!_"    contains=ALL keepend oneline
 syn region hobDelete    start="\\\@<!\-\-\(\S\{2,}\)\@="  end="\S\@<=\\\@<!\-\-" contains=ALL
 syn region hobExample   start="(exe\=m\=p\=l\=e\=\s*:\s*" end="\s*)"             contains=ALL
+syn region hobReference start="\\\@<!\[\(\S\{2,}\)\@="    end="\S\@<=\\\@<!\]"
 
 
 " Highlighting
@@ -51,6 +56,7 @@ hi def link hobTitle     Title
 hi def link hobQuote     String
 hi def link hobDef       Define
 hi def link hobLink      Special
+hi def link hobReference Include
 hi def link hobComment   Comment
 hi def link hobAbbrev    SpecialChar
 hi def link hobVariable  Keyword
